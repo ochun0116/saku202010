@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from django.views import generic
 from .forms import UserCreateForm
 
-# signup
+
 class UserCreate(generic.CreateView):
     """ユーザー仮登録"""
     template_name = 'register/user_create.html'
@@ -80,15 +80,11 @@ class UserCreateComplete(generic.TemplateView):
 
         return HttpResponseBadRequest()
 
-class Top(generic.TemplateView):
-    """トップページ"""
-    template_name = 'register/top.html'
-
 class Login(LoginView):
     """ログインページ"""
     template_name = 'register/login.html'
 
+
 class Logout(LogoutView):
     """ログアウトページ"""
-    template_name = 'register/top.html'
-
+    template_name = 'shop/index.html'

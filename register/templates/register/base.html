@@ -2,23 +2,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43097095-9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-43097095-9');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Veterans Portfolio</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="{% static 'register/css/reset.css' %}"> 
-    <link rel="stylesheet" href="{% static 'register/css/index.css' %}"> 
+    <link rel="stylesheet" href="{% static 'register/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'register/css/index.css' %}">
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
@@ -28,27 +19,10 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="{% static 'register/images/c_r.ico' %}">
     
-    <!-- for ajax -->
-    <script>let myurl = {"base": "{% url 'index' %}"};</script>
 </head>
 <body>
     <!-- nav -->
     <h1></h1>
-    <header>
-        <ul class="right_align">
-            <li class="exlink"><a href="{% url 'index' %}">SHOP</a></li>
-            {% if user.is_authenticated %}
-                <li class="exlink">{{ user.username }}さん</li>
-            {% else %}
-                <li class="exlink">ゲストさん</li>
-            {% endif %}
-            {% if user.is_authenticated %}
-                <li class="logout"><a href="{% url 'register:logout' %}">LOGOUT</a></li>
-            {% else %}
-                <li class="logout"><a href="{% url 'register:login' %}">LOGIN</a></li>
-            {% endif %}
-        </ul>
-    </header>
 
     <div id="main">
         {% block content %}{% endblock %}

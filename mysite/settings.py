@@ -125,6 +125,6 @@ STATIC_URL = '/static/'
 
 # login
 LOGIN_URL = 'register:login'
-LOGIN_REDIRECT_URL = 'register:top'
-LOGOUT_REDIRECT_URL = "register:top"
+LOGIN_REDIRECT_URL = 'shop:index'
+LOGOUT_REDIRECT_URL = "shop:index"
 AUTH_USER_MODEL = 'register.User'
