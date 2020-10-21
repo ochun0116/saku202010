@@ -80,6 +80,7 @@ class UserCreateComplete(generic.TemplateView):
 
         return HttpResponseBadRequest()
 
+
 class Login(LoginView):
     """ログインページ"""
     template_name = 'register/login.html'
