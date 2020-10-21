@@ -1,0 +1,21 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <h1>{% if user.username %}{{ user.username }}{% else %}ゲスト{% endif %} のマイページ</h1>
+    <h2>あなたの持っている商品</h2>
+    <ul>
+        {% for product in products %}
+            <li><a href="">{{ product.name }}</a></li>
+        {% empty %}
+            <li>まだ商品がありません。</li>
+        {% endfor %}
+    </ul>
+
+    <h2>あなたの持っている商品に対する会話</h2>
+    <ul>
+        {% for discussion in discussions %}
+            <li><a href="">{{ discussion.chat }}</a></li>
+        {% empty %}
+            <li>まだ会話はありません。</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
