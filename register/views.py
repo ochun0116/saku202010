@@ -87,4 +87,4 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     """ログアウトページ"""
-    template_name = 'shop/index.html'
+    template_name = 'shop/mypage.html'

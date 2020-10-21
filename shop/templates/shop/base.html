@@ -30,6 +30,7 @@
         <ul class="right_align">
             <li class="exlink"><a href="{% url 'shop:index' %}">SHOP</a></li>
             {% if user.is_authenticated %}
+                <a href="{% url 'shop:mypage' %}">マイページ</a>
                 <li class="exlink">{{ user.username }}さん</li>
             {% else %}
                 <li class="exlink">ゲストさん</li>
