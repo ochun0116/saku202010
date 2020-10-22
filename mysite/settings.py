@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'register.apps.RegisterConfig', # add
-    'shop.apps.ShopConfig', # add
+    'register.apps.RegisterConfig',  # add
+    'shop.apps.ShopConfig',  # add
 ]
 
 MIDDLEWARE = [
@@ -125,8 +125,8 @@ STATIC_URL = '/static/'
 
 # login
 LOGIN_URL = 'register:login'
-LOGIN_REDIRECT_URL = 'shop:index'
-LOGOUT_REDIRECT_URL = "shop:index"
+LOGIN_REDIRECT_URL = 'shop:product_list'
+LOGOUT_REDIRECT_URL = "shop:product_list"
 AUTH_USER_MODEL = 'register.User'
 
 # mail
