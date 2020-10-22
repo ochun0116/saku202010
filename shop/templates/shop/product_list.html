@@ -1,0 +1,12 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    トップページです（ログインなしでも可）
+
+    <h1>商品一覧</h1>
+    <hr>
+    {% for product in product_list %}
+        <h2>{{ product.name }}</h2>
+        <p><a href="{% url 'shop:product_detail' product.pk %}">詳細をみる</a></p>
+    {% endfor %}
+
+{% endblock %}

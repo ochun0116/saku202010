@@ -21,14 +21,14 @@
     <link rel="shortcut icon" href="{% static 'shop/images/c_r.ico' %}">
     
     <!-- for ajax -->
-    <script>let myurl = {"base": "{% url 'shop:index' %}"};</script>
+    <script>let myurl = {"base": "{% url 'shop:product_list' %}"};</script>
 </head>
 <body>
     <!-- nav -->
     <h1></h1>
     <header>
         <ul class="right_align">
-            <li class="exlink"><a href="{% url 'shop:index' %}">SHOP</a></li>
+            <li class="exlink"><a href="{% url 'shop:product_list' %}">SHOP</a></li>
             {% if user.is_authenticated %}
                 <a href="{% url 'shop:mypage' %}">マイページ</a>
                 <li class="exlink">{{ user.username }}さん</li>
