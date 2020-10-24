@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView
 
-from .form import DiscussionForm
+from .forms import DiscussionForm, ProductRegisterForm
 from .models import Product, Discussion
 
 
@@ -31,7 +31,7 @@ class MyPage(LoginRequiredMixin, generic.TemplateView):
 
 
 class DiscussionCreateView(LoginRequiredMixin, CreateView):
-    """CardCreateView"""
+    """DiscussionCreateView"""
     model = Discussion
     template_name = "shop/discussions/create.html"
     form_class = DiscussionForm
@@ -43,3 +43,15 @@ class DiscussionCreateView(LoginRequiredMixin, CreateView):
         comment.product_id = product_pk
         comment.save()
         return redirect('shop:product_detail', pk=product_pk)
+
+
+class ProductRegister(LoginRequiredMixin, CreateView):
+    """ProductCreateView"""
+    model = Product
+    template_name = "shop/product/create.html"
+    form_class = ProductRegisterForm
+    success_url = reverse_lazy("shop:mypage")
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
