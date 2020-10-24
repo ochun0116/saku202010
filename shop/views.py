@@ -1,5 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import CreateView
+
+from .form import DiscussionForm
 from .models import Product, Discussion
 
 
@@ -23,3 +28,18 @@ class MyPage(LoginRequiredMixin, generic.TemplateView):
         context['discussions'] = Discussion.objects.filter(product__user=self.request.user).order_by('created_at')
 
         return context
+
+
+class DiscussionCreateView(LoginRequiredMixin, CreateView):
+    """CardCreateView"""
+    model = Discussion
+    template_name = "shop/discussions/create.html"
+    form_class = DiscussionForm
+    success_url = reverse_lazy("shop:index")
+
+    def form_valid(self, form):
+        product_pk = self.request.user.id
+        comment = form.save(commit=False)
+        comment.product_id = product_pk
+        comment.save()
+        return redirect('shop:product_detail', pk=product_pk)
