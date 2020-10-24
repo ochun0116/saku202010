@@ -6,8 +6,9 @@
     <h2>{{ product.category }}</h2>
     <h3>{{ product.name }}</h3>
     {% for discussion in product.discussion_set.all %}
-        <p>{{ discussion.chat }} {{ discussion.created_at }}</p>
+        <p>{{ discussion.chat }} {{ user.email }}({{ discussion.created_at|date:"Y/m/d H:i" }})</p>
         <hr>
     {% endfor %}
+    <a href="{% url 'shop:discussion_create' %}">投稿</a>
 
 {% endblock %}
