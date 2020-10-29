@@ -5,8 +5,25 @@
     <h1>商品一覧</h1>
     <hr>
     {% for product in product_list %}
-        <h2>{{ product.name }}</h2>
-        <p><a href="{% url 'shop:product_detail' product.pk %}">詳細をみる</a></p>
+        <h2>商品カテゴリ1の商品詳細分類1 [商品掲載サンプル]</h2>  
+        <div class="cards">
+        <ul>
+            <li>
+                <section class="card">
+                    <img class="card-img" src="/static/shopping/img/Special.jpg" alt="Special">
+                    <div class="card-content">
+                        <h3 class="card-title">{{ product.name }}</h3>
+                        <p class="card-text">
+                            price: @2,580 円<br>
+                            プリプリの大海老を贅沢にトッピングし、…<br>
+                        </p>
+                    </div>
+                    <div class="card-link">
+                        <a href="{% url 'shop:product_detail' product.pk %}">もっと詳しく</a>
+                    </div>
+                </section>
+            </li>
+        </ul>
     {% endfor %}
 
 {% endblock %}
