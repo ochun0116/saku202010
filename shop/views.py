@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import CreateView
 
@@ -35,14 +34,13 @@ class DiscussionCreateView(LoginRequiredMixin, CreateView):
     model = Discussion
     template_name = "shop/discussions/create.html"
     form_class = DiscussionForm
-    success_url = reverse_lazy("shop:index")
 
     def form_valid(self, form):
-        product_pk = self.request.user.id
-        comment = form.save(commit=False)
-        comment.product_id = product_pk
-        comment.save()
-        return redirect('shop:product_detail', pk=product_pk)
+        form.instance.product_id = self.kwargs.get('pk')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('shop:product_detail', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class ProductRegister(LoginRequiredMixin, CreateView):
@@ -53,5 +51,5 @@ class ProductRegister(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("shop:mypage")
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.user_id = self.request.user.id
         return super().form_valid(form)
