@@ -5,8 +5,44 @@
     <h1>商品一覧</h1>
     <hr>
     {% for product in product_list %}
-        <h2>{{ product.name }}</h2>
-        <p><a href="{% url 'shop:product_detail' product.pk %}">詳細をみる</a></p>
+        <h2>商品カテゴリ1の商品詳細分類1 [商品掲載サンプル]</h2>  
+        <ul class="ul-list-02">  
+        <!-- 商品情報 -->  
+        <li>  
+        <dl>  
+        <dt><a href="#"><img src="image.jpg" alt="" width="" height="" /></a></dt>  
+        <dd>商品名</dd>  
+        <dd>価格：&yen;200,000</dd>  
+        <dd><a href="#">商品詳細ページ</a></dd>  
+        <dd><a href="#"><img src="cart.jpg" alt="ショッピングカート" width="" height="" /></a></dd>  
+        </dl>  
+        </li>  
+        <!-- // 商品情報 -->  
+      
+        <!-- 商品情報 -->  
+        <li>  
+        <dl>  
+        <dt><a href="#"><img src="image.jpg" alt="" width="" height="" /></a></dt>  
+        <dd>商品名</dd>  
+        <dd>価格：&yen;200,000</dd>  
+        <dd><a href="#">商品詳細ページ</a></dd>  
+        <dd><a href="#"><img src="cart.jpg" alt="ショッピングカート" width="" height="" /></a></dd>  
+        </dl>  
+        </li>  
+        <!-- // 商品情報 -->  
+      
+        <!-- 商品情報 -->  
+        <li>  
+        <dl>  
+        <dt><a href="#"><img src="image.jpg" alt="" width="" height="" /></a></dt>  
+        <dd>商品名</dd>  
+        <dd>価格：&yen;200,000</dd>  
+        <dd><a href="#">商品詳細ページ</a></dd>  
+        <dd><a href="#"><img src="cart.jpg" alt="ショッピングカート" width="" height="" /></a></dd>  
+        </dl>  
+        </li>  
+        <!-- // 商品情報 -->  
+        </ul>  
     {% endfor %}
 
 {% endblock %}
