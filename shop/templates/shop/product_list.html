@@ -1,8 +1,25 @@
 {% extends "shop/base.html" %}
+{% load humanize %}
+{% load static %}
 {% block content %}
     トップページです（ログインなしでも可）
 
     <h1>商品一覧</h1>
+
+    <aside id="search" class="container">
+        <h2>Search</h2>
+        <form method="GET" id="search-form">
+            {{ search_form.category }}
+
+            <div class="field">
+                {{ search_form.keyword }}
+            </div>
+
+            <div class="field">
+                <button type="submit">送信</button>
+            </div>
+        </form>
+    </aside>
     <hr>
     {% for product in product_list %}
         <h2>商品カテゴリ1の商品詳細分類1 [商品掲載サンプル]</h2>  
@@ -10,12 +27,12 @@
         <ul>
             <li>
                 <section class="card">
-                    <img class="card-img" src="/static/shopping/img/Special.jpg" alt="Special">
+                    <img class="card-img" src="{% static 'shop/img/' %}{{ product.id }}.jpg" alt="{{ product.name }}">
                     <div class="card-content">
                         <h3 class="card-title">{{ product.name }}</h3>
                         <p class="card-text">
-                            price: @2,580 円<br>
-                            プリプリの大海老を贅沢にトッピングし、…<br>
+                            price: {{ product.price | intcomma }} 円<br>
+                            {{ product.description | truncatechars:20 }}<br>
                         </p>
                     </div>
                     <div class="card-link">

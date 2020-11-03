@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'register.apps.RegisterConfig',  # add
     'shop.apps.ShopConfig',  # add
+    'django.contrib.humanize',  # add
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'yoshitakaOkada0214@gmail.com'
 EMAIL_HOST_PASSWORD = GMAILPW
 EMAIL_USE_TLS = True
+
+# 'django.contrib.humanize' 3桁カンマ
+NUMBER_GROUPING = 3
