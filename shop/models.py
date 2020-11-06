@@ -27,5 +27,6 @@ class Product(models.Model):
 class Discussion(models.Model):
     """会話"""
     chat = models.TextField(verbose_name='会話')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField('作成日時', auto_now_add=True)

@@ -3,7 +3,6 @@ from django.db.models import Q
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic import CreateView
-
 from .forms import DiscussionForm, ProductRegisterForm, SearchForm
 from .models import Product, Discussion, Category
 
@@ -22,11 +21,9 @@ class ProductListView(generic.ListView):
             category = self.form.cleaned_data.get('category')
             if category:
                 queryset = queryset.filter(category=category)
-
             keyword = self.form.cleaned_data['keyword']
             if keyword:
                 queryset = queryset.filter(Q(name__icontains=keyword)).distinct()
-
         return queryset.select_related('category')
 
     def get_context_data(self, **kwargs):
@@ -60,6 +57,7 @@ class DiscussionCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.product_id = self.kwargs.get('pk')
+        form.instance.user_id = self.kwargs.get('user_id')
         return super().form_valid(form)
 
     def get_success_url(self):
