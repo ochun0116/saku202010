@@ -31,7 +31,7 @@ class SearchForm(forms.Form):
     category = forms.ModelChoiceField(
         label='カテゴリ',
         required=False,
-        queryset=Category.objects.annotate(product_count=Count('name')).order_by('name'),
+        queryset=Category.objects.annotate(product_count=Count('product')),
         widget=forms.RadioSelect,
     )
 
