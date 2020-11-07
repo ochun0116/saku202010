@@ -19,26 +19,27 @@
         </form>
     </aside>
     <hr>
-    {% for product in product_list %}
-        <h2>商品概要リスト</h2>  
-        <div class="cards">
-        <ul>
-            <li>
-                <section class="card">
-                    <img class="card-img" src="{% static 'shop/img/' %}{{ product.id }}.jpg" alt="{{ product.name }}">
-                    <div class="card-content">
-                        <h3 class="card-title">{{ product.name }}</h3>
-                        <p class="card-text">
-                            price: {{ product.price | intcomma }} 円<br>
-                            {{ product.description | truncatechars:20 }}<br>
-                        </p>
-                    </div>
-                    <div class="card-link">
-                        <a href="{% url 'shop:product_detail' product.pk %}">もっと詳しく</a>
-                    </div>
-                </section>
-            </li>
-        </ul>
-    {% endfor %}
 
+    <h2>商品概要リスト</h2>
+    <div class="cards">
+        <ul>
+            {% for product in product_list %}
+                <li>
+                    <section class="card">
+                        <img class="card-img" src="{% static 'shop/img/' %}{{ product.id }}.jpg" alt="{{ product.name }}">
+                        <div class="card-content">
+                            <h3 class="card-title">{{ product.name }}</h3>
+                            <p class="card-text">
+                                price: {{ product.price | intcomma }} 円<br>
+                                {{ product.description | truncatechars:20 }}<br>
+                            </p>
+                        </div>
+                        <div class="card-link">
+                            <a href="{% url 'shop:product_detail' product.pk %}">もっと詳しく</a>
+                        </div>
+                    </section>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
