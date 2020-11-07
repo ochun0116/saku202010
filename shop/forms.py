@@ -17,7 +17,7 @@ class ProductRegisterForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = ('user_id', 'created_at')
-        fields = ('name', 'category',)
+        fields = ('category', 'name', 'price', 'description', 'image')
 
 
 class SearchForm(forms.Form):
