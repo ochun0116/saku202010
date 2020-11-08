@@ -10,12 +10,8 @@
         <h2>Search</h2>
         <form method="GET" id="search-form">
             {{ search_form.category }}
-            <div class="field">
-                {{ search_form.keyword }}
-            </div>
-            <div class="field">
-                <button type="submit">送信</button>
-            </div>
+            {{ search_form.keyword }}
+            <button type="submit">検索</button>
         </form>
     </aside>
     <hr>
