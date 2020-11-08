@@ -10,6 +10,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="{% static 'shop/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'shop/css/product_list.css' %}">
 
     <!-- font -->
@@ -30,7 +31,7 @@
         <ul class="right_align">
             <li class="exlink"><a href="{% url 'shop:product_list' %}">SHOP</a></li>
             {% if user.is_authenticated %}
-                <a href="{% url 'shop:mypage' %}">マイページ</a>
+                <li><a href="{% url 'shop:mypage' %}">マイページ</a></li>
                 <li class="exlink">{{ user.username }}さん</li>
             {% else %}
                 <li class="exlink">ゲストさん</li>
@@ -48,7 +49,7 @@
     </div>
     
     <footer>
-        <p>© 2020 veterans / <a href="http://veteransjapan.com/" target="_blank">http://veteransjapan.com/</a></p>
+        <p>© 2020 <a href="http://veteransjapan.com/" target="_blank">veterans</a></p>
     </footer>
 
 </body>
