@@ -4,6 +4,7 @@
     <h1>商品詳細</h1>
     <h2>{{ product.category.name }}</h2>
     <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
     <hr>
     {% for discussion in product.discussion_set.all %}
         <p>{{ discussion.chat }} {{ discussion.user.email }}({{ discussion.created_at|date:"Y/m/d H:i" }})</p>
